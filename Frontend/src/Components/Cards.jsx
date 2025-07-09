@@ -48,52 +48,54 @@ const Cards = () => {
         }
     ];
     return (
-        <div className="container">
-            <div className="row g-4">
-                {blogs.map((card, index) => {
-                    return (
-                        <div key={index} className="col-lg-4 col-md-6">
-                            <div className="card h-100">
-                                <img src={card.image} className="card-img-top" alt="..." style={{ height: '200px', objectFit: 'cover' }} />
-                                <div className="card-body d-flex flex-column">
-                                    <h5 className="card-title">{card.title}</h5>
-                                    <p className="card-text flex-grow-1">{card.about}</p>
+        <div className="container-fluid px-0" style={{ minHeight: '100vh' }}>
+            <div className="p-4">
+                <div className="row g-4">
+                    {blogs.map((card, index) => {
+                        return (
+                            <div key={index} className="col-lg-4 col-md-6">
+                                <div className="card h-100">
+                                    <img src={card.image} className="card-img-top" alt="..." style={{ height: '200px', objectFit: 'cover' }} />
+                                    <div className="card-body d-flex flex-column">
+                                        <h5 className="card-title">{card.title}</h5>
+                                        <p className="card-text flex-grow-1">{card.about}</p>
 
-                                    <div className="mt-auto">
-                                        <div className="d-flex align-items-center justify-content-between mb-2">
-                                            <small className="text-muted">
-                                                <i className="bi bi-person-circle me-1"></i>
-                                                {card.authorName}
-                                            </small>
-                                            <small className="text-muted">
-                                                <i className="bi bi-heart me-1"></i>
-                                                {card.likes}
-                                            </small>
+                                        <div className="mt-auto">
+                                            <div className="d-flex align-items-center justify-content-between mb-2">
+                                                <small className="text-muted">
+                                                    <i className="bi bi-person-circle me-1"></i>
+                                                    {card.authorName}
+                                                </small>
+                                                <small className="text-muted">
+                                                    <i className="bi bi-heart me-1"></i>
+                                                    {card.likes}
+                                                </small>
+                                            </div>
+
+                                            <div className="d-flex align-items-center justify-content-between mb-3">
+                                                <small className="text-muted">
+                                                    <i className="bi bi-clock me-1"></i>
+                                                    {new Date(card.createdAt).toLocaleDateString()}
+                                                </small>
+                                                {card.hashtags && (
+                                                    <div>
+                                                        {card.hashtags.slice(0, 2).map((tag, i) => (
+                                                            <span key={i} className="badge bg-secondary me-1" style={{ fontSize: '0.7rem' }}>
+                                                                {tag}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <a href="#" className="btn btn-primary w-100">ReadMore</a>
                                         </div>
-
-                                        <div className="d-flex align-items-center justify-content-between mb-3">
-                                            <small className="text-muted">
-                                                <i className="bi bi-clock me-1"></i>
-                                                {new Date(card.createdAt).toLocaleDateString()}
-                                            </small>
-                                            {card.hashtags && (
-                                                <div>
-                                                    {card.hashtags.slice(0, 2).map((tag, i) => (
-                                                        <span key={i} className="badge bg-secondary me-1" style={{ fontSize: '0.7rem' }}>
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        <a href="#" className="btn btn-primary w-100">ReadMore</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         </div>
     );
